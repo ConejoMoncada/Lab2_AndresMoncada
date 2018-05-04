@@ -46,5 +46,13 @@ public class Examen {
         }
         return salida;
     }
-    
+    public int tamaño(){
+        return preguntas.size();
+    }
+    public String pr(int i){
+        return preguntas.get(i);
+    }
+    public String rsp(int i){
+        return respuestas.get(i).toString();
+    }
 }

@@ -6,6 +6,7 @@
 package lab2_andresmoncada;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -23,6 +24,9 @@ public class Alumno {
     private String password;
     private ArrayList<String> clases = new ArrayList();
     private ArrayList<Integer> notas = new ArrayList();
+    private ArrayList todo = new ArrayList();
+    private ArrayList respuestas = new ArrayList();
+    Scanner sc = new Scanner(System.in);
     
     public Alumno(String nom, long nc, String fn, int ed, String cres, String nac, long NID, String u, String pass){
         nombre = nom;
@@ -55,5 +59,33 @@ public class Alumno {
             else
                 System.out.println(clases.get(i) + " - Examen no tomado");
         }
+    }
+    public void setNotas(int i, int n){
+        notas.set(i, n);
+    }
+    public void setNotas(){
+        System.out.print("Ingrese el indice de la clase (indices comienzan en 0): ");
+        int i = sc.nextInt();
+        System.out.print("Ingrese la nota nueva: ");
+        int n = sc.nextInt();
+        notas.set(i, n);
+    }
+    public int getNota(int i){
+        return notas.get(i);
+    }
+    public void preparar(){
+        respuestas = new ArrayList();
+    }
+    public void responder(String r){
+        respuestas.add(r);
+    }
+    public void finExamen(int i){
+        todo.add(i, respuestas);
+    }
+    public void inicio(){
+        todo.ensureCapacity(clases.size());
+    }
+    public String getresp(int e, int p){
+        return ((ArrayList)todo.get(e)).get(p).toString();
     }
 }
