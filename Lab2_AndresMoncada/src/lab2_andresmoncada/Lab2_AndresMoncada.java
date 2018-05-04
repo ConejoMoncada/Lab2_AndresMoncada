@@ -65,6 +65,16 @@ public class Lab2_AndresMoncada {
                 case 2:
                     revisar();
                     break;
+                case 3:
+                    notasA();
+                    break;
+                case 4:
+                    modif();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Comando no válido. ");
             }
         }while(op!=0);
     }
@@ -73,6 +83,15 @@ public class Lab2_AndresMoncada {
         e = new Examen(sc.next());
         e.CrearEx();
         examenes.add(e);
+    }
+    public static void revisar(){
+        
+    }
+    public static void notasA(){
+        
+    }
+    public static void modif(){
+        
     }
     public static void cuenta(){
         System.out.print("Nombre completo: ");
@@ -94,13 +113,14 @@ public class Lab2_AndresMoncada {
         System.out.print("Contraseña: ");
         String pass = sc.next();
         a = new Alumno(nom, nc, fn, ed, cres, nac, NID, u, pass);
+        for (int i = 0; i < examenes.size(); i++) {
+            a.clases(((Examen)examenes.get(i)).getClase());
+        }
         alumnos.add(a);
         System.out.println("Cuenta creada.");
     }
-    public static void revisar(){
-        System.out.println(examenes.get(0));
-    }
     public static void login(){
+        int op;
         String entrada;
         boolean val = false;
         do{
@@ -128,8 +148,17 @@ public class Lab2_AndresMoncada {
         char res;
         do{
             System.out.println("Bienvenid@, " + ((Alumno)alumnos.get(indexAl)).getNombre());
-            System.out.print("Tomar otro examen?[s/n]: ");
-            res = sc.next().charAt(0);
-        }while (res == 's' || res == 'S');
+            System.out.println("1. Ver notas");
+            System.out.println("2. Tomar examen");
+            System.out.println("0. Salir");
+            op = sc.nextInt();
+            switch(op){
+                case 1:
+                    break;
+                case 2:
+                    ((Alumno)alumnos.get(indexAl)).listado();
+                    break;
+            }
+        }while (op != 0);
     }
 }

@@ -44,4 +44,16 @@ public class Alumno {
     public String getNombre(){
         return nombre;
     }
+    public void clases(String c){
+        clases.add(c);
+        notas.add(-1);
+    }
+    public void listado(){
+        for (int i = 0; i < clases.size(); i++) {
+            if(notas.get(i) != -1)
+                System.out.println(clases.get(i) + " - " + notas.get(i));
+            else
+                System.out.println(clases.get(i) + " - Examen no tomado");
+        }
+    }
 }
