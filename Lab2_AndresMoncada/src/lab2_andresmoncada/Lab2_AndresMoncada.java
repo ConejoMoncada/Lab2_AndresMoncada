@@ -136,9 +136,8 @@ public class Lab2_AndresMoncada {
     public static void notasA(){
         System.out.println("Notas registradas");
         for (int i = 0; i < alumnos.size(); i++) {
-            for (int j = 0; j < 10; j++) {
-                
-            }
+            ((Alumno)alumnos.get(indexAl)).getNombre();
+            ((Alumno)alumnos.get(indexAl)).listado();
         }
     }
     public static void modif(){
